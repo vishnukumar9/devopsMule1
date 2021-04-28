@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="1439bf18-d527-4f47-b9b9-307cb411a820">
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="895f33e7-fe21-4bda-a3a8-20689ef738ea" basePath="/api/timezone" >
+		<http:request-connection host="worldtimeapi.org" />
+	</http:request-config>
+	<flow name="devopsmulesoftFlow" doc:id="6d5c68b1-2911-4b69-9e69-05f27a6345cc" >
+		<http:listener doc:name="Listener" doc:id="aee4202b-1308-4919-b89a-b065a4ea2536" config-ref="HTTP_Listener_config" path="/newproject"/>
+		<logger level="INFO" doc:name="Logger" doc:id="df6c544d-961c-445d-8c37-c0214ba3b5e8" message="flow is started"/>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="994fe58d-fc55-4fb9-92c1-f8b88f2aa405" >
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="510ac3d8-9107-48fa-bb80-871ca329c4fd" message="flow1"/>
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="1b87d79a-cd03-425d-ac63-6bc06e2f2e06" message="flow2"/>
+			</route>
+		</scatter-gather>
+		<logger level="INFO" doc:name="Logger" doc:id="9812eff6-9284-4d09-996a-5235ce437002" message="flow exwcuted sucessfully"/>
+	</flow>
+</mule>
