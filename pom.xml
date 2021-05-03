@@ -34,7 +34,7 @@
 <cloudHubDeployment>
 				<username>sree55521</username>
 				<environment>sandbox</environment>
-				<workerType>Micro</workerType>
+				<workerType>wipro</workerType>
 				<applicationName>devopsmulesoft</applicationName>
 				<password>Thraivalya@9</password>
 				<muleVersion>4.2.2</muleVersion>
